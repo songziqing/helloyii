@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'adminEmail' => ['1044649609@qq.com'=>'LoveFlowerqq'],
+    'adminEmail' => ['songziqing666@126.com'=>'LoveFlower'],
 ];

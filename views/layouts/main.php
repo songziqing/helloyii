@@ -27,7 +27,7 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => 'My Company',
+        'brandLabel' => '类似说说',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
@@ -40,7 +40,7 @@ AppAsset::register($this);
         ['label' => 'Contact', 'url' => ['/site/contact']]
     ];
     if (Yii::$app->user->isGuest) {
-        array_push($navItems,['label' => 'Sign In', 'url' => ['/user/login']],['label' => 'Sign Up', 'url' => ['/user/register']]);
+        array_push($navItems,['label' => '登录', 'url' => ['/user/login']]);
     } else {
         array_push($navItems,['label' => 'Logout (' . Yii::$app->user->identity->username . ')',
                 'url' => ['/site/logout'],
