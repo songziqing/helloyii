@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Yii 2 Basic Project Template
 ============================
 
@@ -180,13 +181,14 @@ to collect code coverage. You can run your tests and collect coverage with the f
 
 ```
 #collect coverage for all tests
-composer exec codecept run --coverage-html --coverage-xml
-
-#collect coverage only for unit tests
-composer exec codecept run unit --coverage-html --coverage-xml
+co:composer exec codecept run unit --coverage-html --coverage-xml
 
 #collect coverage for unit and functional tests
 composer exec codecept run functional,unit --coverage-html --coverage-xml
 ```
 
 You can see code coverage output under the `tests/_output` directory.
+=======
+# helloyii
+一个Yii 2.0的简单例子
+>>>>>>> 18e80c09197ef46985f377a7862ff850a35e45d4
