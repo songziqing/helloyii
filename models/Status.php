@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 
+
 /**
  * This is the model class for table "status".
  *
@@ -17,6 +18,8 @@ class Status extends \yii\db\ActiveRecord
 {
     const PERMISSIONS_PRIVATE = 10;
     const PERMISSIONS_PUBLIC = 20;
+
+
     /**
      * @inheritdoc
      */

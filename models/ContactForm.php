@@ -38,7 +38,11 @@ class ContactForm extends Model
     public function attributeLabels()
     {
         return [
-            'verifyCode' => 'Verification Code',
+            'name' => '名字',
+            'email' => '邮箱',
+            'subject' => '标题',
+            'body' => '验证码',
+            'verifyCode' => '验证码',
         ];
     }
 
@@ -50,11 +54,13 @@ class ContactForm extends Model
     public function contact($email)
     {
         if ($this->validate()) {
+            $body = "游客发送内容:<br/>".$this->body."<br/>发送者名字：".$this->name."   发送者邮箱:".$this->email;
             Yii::$app->mailer->compose()
                 ->setTo($email)
-                ->setFrom([$this->email => $this->name])
+                ->setFrom($email)
                 ->setSubject($this->subject)
-                ->setTextBody($this->body)
+                //->setTextBody($body)  //发送普通文本
+                ->setHtmlBody($body)    //发送带有html标签的内容
                 ->send();
 
             return true;

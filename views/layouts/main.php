@@ -34,15 +34,15 @@ AppAsset::register($this);
         ],
     ]);
     $navItems=[
-        ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'Status', 'url' => ['/status/index']],
-        ['label' => 'About', 'url' => ['/site/about']],
-        ['label' => 'Contact', 'url' => ['/site/contact']]
+        ['label' => '公共主页', 'url' => ['/site/index']],
+        ['label' => '我的说说', 'url' => ['/status/index']],
+        ['label' => '关于我们', 'url' => ['/site/about']],
+        ['label' => '联系我们', 'url' => ['/site/contact']]
     ];
     if (Yii::$app->user->isGuest) {
         array_push($navItems,['label' => '登录', 'url' => ['/user/login']]);
     } else {
-        array_push($navItems,['label' => 'Logout (' . Yii::$app->user->identity->username . ')',
+        array_push($navItems,['label' => '退出登录 (' . Yii::$app->user->identity->username . ')',
                 'url' => ['/site/logout'],
                 'linkOptions' => ['data-method' => 'post']]
         );
