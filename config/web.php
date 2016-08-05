@@ -80,8 +80,16 @@ $config = [
             'cost' => 12,
             'admins' => ['admin']
         ],
+        'admin' => [
+            'class' => 'app\modules\admin\Admin',
+        ],
     ],
     'params' => $params,
+//    'modules' => [
+//        'admin' => [
+//            'class' => 'app\modules\admin\Admin',
+//        ],
+ //   ],
 ];
 
 if (YII_ENV_DEV) {

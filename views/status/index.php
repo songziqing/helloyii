@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 //            'id',
             'message',
-            'permission',
+            //'permission',
             [
                 'attribute'=>'permission',
                 'value'=>
@@ -45,8 +45,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format' => ['date', 'php:Y-m-d H:i']
             ],
             //'author_id',
-            'user.email',
-            'user.username',
+            //'user.email',
+            //'user.username',
 //            [
 //                'attribute'=>'author_id',
 //                'value'=>

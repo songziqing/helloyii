@@ -53,8 +53,10 @@ $this->params['breadcrumbs'][] = $this->title;
 //                    function($model){
 //                        return Status::getStatusAuthorName($model->author_id);}
 //            ],
-            ['class' => 'yii\grid\ActionColumn',
-            ],
+
+//            [
+//                'class' => 'yii\grid\ActionColumn',
+//            ],
         ],
     ]); ?>
 </div>

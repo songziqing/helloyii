@@ -29,7 +29,7 @@ class StatusController extends Controller
             ],
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['index', 'view', 'update','create','delete'],
+                'only' => ['index', 'view', 'update', 'create', 'delete'],
                 'rules' => [
                     [
                         'allow' => true,
@@ -38,7 +38,7 @@ class StatusController extends Controller
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['index', 'view', 'update','create','delete'],
+                        'actions' => ['index', 'view', 'update', 'create', 'delete'],
                         'roles' => ['@'],
                     ],
                 ],
@@ -53,17 +53,18 @@ class StatusController extends Controller
     public function actionCommon()
     {
         $searchModel = new StatusSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider = $searchModel->searchAllStatus(Yii::$app->request->queryParams);
 
         return $this->render('common', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
+
     public function actionIndex()
     {
         $searchModel = new StatusSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider = $searchModel->searchMyStatus(Yii::$app->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -93,19 +94,17 @@ class StatusController extends Controller
     {
         $model = new Status();
 
-        if($model->load(Yii::$app->request->post()))
-        {
+        if ($model->load(Yii::$app->request->post())) {
             $model->created_at = time();
             $model->updated_at = time();
             $model->author_id = Yii::$app->user->getId();
 
-            if($model->save())
-            {
+            if ($model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         }
         return $this->render('create', [
-               'model' => $model,
+            'model' => $model,
         ]);
     }
 
@@ -119,12 +118,10 @@ class StatusController extends Controller
     {
         $model = $this->findModel($id);
 
-        if($model->load(Yii::$app->request->post()))
-        {
+        if ($model->load(Yii::$app->request->post())) {
             $model->updated_at = time();
 
-            if($model->save())
-            {
+            if ($model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         }
@@ -160,5 +157,13 @@ class StatusController extends Controller
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
+    }
+
+    public function actionTest()
+    {
+        //首先获取到子模块
+        $admin = \Yii::$app->getModule('admin');
+        //调用子模块的操作
+        $admin->runAction('default/index');
     }
 }
