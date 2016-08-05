@@ -8,7 +8,7 @@ use app\models\Status;
 /* @var $searchModel app\models\StatusSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = '我的说说';
+$this->title = '类似说说';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="status-index">
@@ -17,23 +17,23 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('创建说说', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('创建我的说说', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+           // ['class' => 'yii\grid\SerialColumn'],
 
 //            'id',
             'message',
-            'permission',
-            [
-                'attribute'=>'permission',
-                'value'=>
-                    function($model){
-                        return Status::getPermissionsLabel($model->permission);}
-            ],
+            //'permission',
+//            [
+//                'attribute'=>'permission',
+//                'value'=>
+//                    function($model){
+//                        return Status::getPermissionsLabel($model->permission);}
+//            ],
             //'created_at:datetime',
 //            [
 //                'attribute' => 'created_at',
@@ -45,7 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format' => ['date', 'php:Y-m-d H:i']
             ],
             //'author_id',
-            'user.email',
+           // 'user.email',
             'user.username',
 //            [
 //                'attribute'=>'author_id',

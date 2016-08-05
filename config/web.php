@@ -74,6 +74,9 @@ $config = [
         'user' => [
             'class' => 'dektrium\user\Module',
             'confirmWithin' => 21600,
+            'modelMap' => [
+                'User' => 'app\models\User',
+            ],
             'cost' => 12,
             'admins' => ['admin']
         ],

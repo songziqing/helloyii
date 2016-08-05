@@ -4,7 +4,6 @@ namespace app\models;
 
 use Yii;
 
-
 /**
  * This is the model class for table "status".
  *
@@ -18,8 +17,6 @@ class Status extends \yii\db\ActiveRecord
 {
     const PERMISSIONS_PRIVATE = 10;
     const PERMISSIONS_PUBLIC = 20;
-
-
     /**
      * @inheritdoc
      */
@@ -34,9 +31,9 @@ class Status extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['message','permission'], 'required'],
+            [['message','permission','author_id'], 'required'],
             [['message'], 'string'],
-            [['permission'], 'integer'],
+            [['permission','author_id'], 'integer'],
 //            [['created_at', 'updated_at'], 'string', 'max' => 255],
         ];
     }
@@ -52,6 +49,7 @@ class Status extends \yii\db\ActiveRecord
             'permission' => '权限',
             'created_at' => '创建时间',
             'updated_at' => '更新时间',
+            'author_id' => '作者',
         ];
     }
 
@@ -65,5 +63,10 @@ class Status extends \yii\db\ActiveRecord
         } else {
             return '不公开';
         }
+    }
+
+    public function getUser()
+    {
+        return $this->hasOne(User::className(), ['id' => 'author_id']);
     }
 }

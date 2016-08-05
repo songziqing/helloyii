@@ -21,18 +21,24 @@ class StatusController extends Controller
     public function behaviors()
     {
         return [
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'delete' => ['POST'],
+                ],
+            ],
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['index', 'view', 'update','create'],
+                'only' => ['index', 'view', 'update','create','delete'],
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['index'],
+                        'actions' => [''],
                         'roles' => ['?'],
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['index', 'view', 'update','create'],
+                        'actions' => ['index', 'view', 'update','create','delete'],
                         'roles' => ['@'],
                     ],
                 ],
@@ -44,6 +50,16 @@ class StatusController extends Controller
      * Lists all Status models.
      * @return mixed
      */
+    public function actionCommon()
+    {
+        $searchModel = new StatusSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('common', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
     public function actionIndex()
     {
         $searchModel = new StatusSearch();
@@ -53,6 +69,7 @@ class StatusController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
+
     }
 
     /**
@@ -80,6 +97,7 @@ class StatusController extends Controller
         {
             $model->created_at = time();
             $model->updated_at = time();
+            $model->author_id = Yii::$app->user->getId();
 
             if($model->save())
             {
